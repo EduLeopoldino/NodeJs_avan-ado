@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>Clima</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1"
+      crossorigin="anonymous"
+    />
+    <script src="main.js"></script>
+    <style>
+      .day {
+        width: 200px;
+        height: 200px;
+        color: #fff;
+        background: linear-gradient(223deg, rgba(61, 100, 151, 0.75)0%, rgb(37, 115, 216, 1)95%);
+        border-radius: 20px;
+        padding: 20px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div class="card mt-2 mb-2 row">
+        <div class="card-body col">
+          <h2>Resultado</h2>
+          <p class="display-3 d-inline"><%= dado.clima.results.city %> - </p>
+          <p class="display-6 d-inline"><%= dado.cep[0].logradouro %></p>
+
+          <div class="row">
+            <h3 class="d-inline col align-self-start text-muted">CEP: <%= dado.cep[0].cep %></h3>
+            <p class="d-inline col align-self-end text-muted text-end"><%= dado.clima.results.date %></p>
+          </div><hr>
+
+          <p class="display-3"><%= dado.clima.results.temp %>°</p>
+          <p><%= dado.clima.results.description %></p>
+          <div class="d-flex">
+              <div class="day text-center m-2">
+                <p class="d-inline"><%= dado.clima.results.forecast[1].date %></p>
+                <p class="display-5">
+                  <%= dado.clima.results.forecast[1].weekday %>
+                </p>
+                <p class="d-inline">
+                  max <%= dado.clima.results.forecast[1].max %>°
+                </p>
+                <p class="d-inline">
+                  min <%= dado.clima.results.forecast[1].min %>°
+                </p>
+                <p class=""><%= dado.clima.results.forecast[1].description %></p>
+              </div>
+    
+              <div class="day text-center m-2">
+                <p class="d-inline"><%= dado.clima.results.forecast[2].date %></p>
+                <p class="display-5">
+                  <%= dado.clima.results.forecast[2].weekday %>
+                </p>
+                <p class="d-inline">
+                  max <%= dado.clima.results.forecast[2].max %>°
+                </p>
+                <p class="d-inline">
+                  min <%= dado.clima.results.forecast[2].min %>°
+                </p>
+                <p class=""><%= dado.clima.results.forecast[2].description %></p>
+              </div>
+          </div>
+        </div>
+      </div>
+      <a href="/" class="btn btn-outline-dark">Procurar outro endereço</a>
+    </div>
+  </body>
+</html>
